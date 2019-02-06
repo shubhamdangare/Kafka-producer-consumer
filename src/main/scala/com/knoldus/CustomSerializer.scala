@@ -16,7 +16,6 @@ class CustomSerializer extends Serializer[User] {
     try {
       val mapper = new ObjectMapper()
       mapper.registerModule(DefaultScalaModule)
-      println(mapper.writeValueAsString(data))
       val result = mapper.writeValueAsString(data).getBytes()
       result
     }
