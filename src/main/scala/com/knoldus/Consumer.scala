@@ -13,14 +13,13 @@ object Consumer extends App {
   props.put("bootstrap.servers", "localhost:9092")
   props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
   props.put("value.deserializer",classOf[CustomDeserializer])
-  props.put("group.id", "user-data4")
+  props.put("group.id", "user-data8")
 
   val consumer = new KafkaConsumer[String, User](props)
-  consumer.subscribe(util.Arrays.asList("user-test4"))
+  consumer.subscribe(util.Arrays.asList("user-test8"))
   println("hi from consumer")
   while(true){
     val record = consumer.poll(100).asScala
-    println(record)
     for (data <- record.iterator){
       println(data.value())
       println("inside consumer")

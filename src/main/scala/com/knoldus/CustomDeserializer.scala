@@ -1,10 +1,10 @@
 package com.knoldus
 
-import java.io.{ByteArrayInputStream, ObjectInputStream}
 import java.util
 
 import org.apache.kafka.common.serialization.Deserializer
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.scala.DefaultScalaModule
 
 
 class CustomDeserializer extends Deserializer[User] {
@@ -16,19 +16,12 @@ class CustomDeserializer extends Deserializer[User] {
 
     try {
       val mapper = new ObjectMapper
+      mapper.registerModule(DefaultScalaModule)
       mapper.readValue(bytes, classOf[User])
     }
     catch {
       case ex: Exception => throw new Exception(ex.getMessage)
     }
-
-    /** val byteIn = new ByteArrayInputStream(bytes)
-      * val objIn = new ObjectInputStream(byteIn)
-      * val obj = objIn.readObject().asInstanceOf[User]
-      *byteIn.close()
-      *objIn.close()
-      * obj
-      */
   }
 
   override def close(): Unit = {
