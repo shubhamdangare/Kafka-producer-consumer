@@ -8,7 +8,7 @@ scalaVersion := "2.12.8"
 lazy val root = (project in file("."))
   .settings(
     name := "root",
-    libraryDependencies ++= Seq("org.apache.kafka" %% "kafka" % "0.11.0.0",
+    libraryDependencies ++= Seq("org.apache.kafka" %% "kafka" % "2.0.0",
       "com.fasterxml.jackson.core" % "jackson-core" % "2.9.8",
       "com.fasterxml.jackson.core" % "jackson-annotations" % "2.9.8",
       "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.8",
